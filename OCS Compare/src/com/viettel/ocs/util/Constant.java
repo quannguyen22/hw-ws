@@ -17,13 +17,13 @@ import org.apache.commons.lang3.StringUtils;
 public class Constant {
 
 	public static String STEP = "1"; // Chay buoc 1 step = 1; Chay buoc 2 step = 2;
-	
+
 	/**
 	 * Thong tin duong dan luu file cua buoc 1 va buoc 2
 	 */
 	public static final String PATH_STEP_1 = StringUtils.trimToEmpty( PropsUtil.getInstance().getValue("msisdn.info.1.path"));
 	public static final String PATH_STEP_2 = StringUtils.trimToEmpty( PropsUtil.getInstance().getValue("msisdn.info.2.path"));
-	
+
 	/**
 	 * Thong tin cua 9 webservice dung truy van thong tin thue bao
 	 */
@@ -75,6 +75,12 @@ public class Constant {
 	public static final String HUAWEI_TMP_RECHARGE_24H = "TMP_RECHARGE_24H";
 	public static final String HUAWEI_TMP_LANG_EN = "TMP_LANG_EN";
 	public static final String HUAWEI_TMP_VT_CUT_SEA = "TMP_VT_CUT_SEA";
-	
+
+	public static final String MSDN_CODE = "%MSISDN";
+	public static final String START_DATE_CODE = "%START_DATE";
+	public static final String END_DATE_CODE = "%END_DATE";
+	public static final String CUSTOMER_SERVICE = "CUSTOMER_SERVICE";
+	public static final String RECHARGE_SERVICE = "RECHARGE_SERVICE";
+	public static final String TMP_LANG_EN_="2002";
 	
 }

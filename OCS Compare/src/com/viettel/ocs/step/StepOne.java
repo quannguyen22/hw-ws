@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.viettel.ocs.controller.CreateDataController;
 import org.apache.commons.lang3.StringUtils;
 
 import com.viettel.ocs.util.Constant;
@@ -83,7 +84,11 @@ public class StepOne {
 					// Dau vao cho class truy van thong tin tu webservice.
 					List<String> msisdns = new ArrayList<String>(msisdnMap.values());
 					Collections.sort(msisdns);
-					
+
+					CreateDataController dataController =new CreateDataController(msisdns);
+					dataController.execute();
+
+
 					System.out.println("Xu ly xong !!!");
 					
 //					pb.maxHint(msisdns.size());
