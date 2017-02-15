@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="false"
+	monitoring="autodetect" dynamicConfig="false">
+
+	<diskStore path="java.io.tmpdir" />
+
+	<!-- Default Cache configuration. These settings will be applied to caches 
+		created programmatically using CacheManager.add(String cacheName). This element 
+		is optional, and using CacheManager.add(String cacheName) when its not present 
+		will throw CacheException The defaultCache has an implicit name "default" 
+		which is a reserved cache name. -->
+	<defaultCache maxEntriesLocalHeap="100" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120" diskSpoolBufferSizeMB="30"
+		maxEntriesLocalDisk="100" diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="FIFO">
+		<persistence strategy="localTempSwap" />
+	</defaultCache>
+
+<!-- Begin: Phan cache dung luu du lieu sau khi truy van webservice -->
+
+	<cache name="tmpBatch" maxEntriesLocalHeap="5000000" eternal="true"
+		maxElementsInMemory="5000000" timeToIdleSeconds="0" timeToLiveSeconds="0"
+		copyOnWrite="true" copyOnRead="true" memoryStoreEvictionPolicy="FIFO">
+
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.TmpBatchFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="tmpAcmM" maxEntriesLocalHeap="5000000"
+		maxElementsInMemory="5000000" eternal="true" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" copyOnWrite="true" copyOnRead="true"
+		memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.TmpAcmMFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="tmpSubsUpp" maxEntriesLocalHeap="5000000" eternal="true"
+		maxElementsInMemory="5000000" timeToIdleSeconds="0" timeToLiveSeconds="0"
+		copyOnWrite="true" copyOnRead="true" memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.TmpSubsUppFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="tmpVtCut" maxEntriesLocalHeap="5000000"
+		maxElementsInMemory="5000000" eternal="true" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" copyOnWrite="true" copyOnRead="true"
+		memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.TmpVtCutFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="tmpFnNbr" maxEntriesLocalHeap="5000000" eternal="true"
+		maxElementsInMemory="5000000" timeToIdleSeconds="0" timeToLiveSeconds="0"
+		copyOnWrite="true" copyOnRead="true" memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.TmpFnNbrFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="tmpOcsCdrHis" maxEntriesLocalHeap="5000000"
+		maxElementsInMemory="5000000" eternal="true" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" copyOnWrite="true" copyOnRead="true"
+		memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+			
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.TmpOcsCdrHisFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="tmpFnSrv" maxEntriesLocalHeap="5000000" eternal="true"
+		maxElementsInMemory="5000000" timeToIdleSeconds="0" timeToLiveSeconds="0"
+		copyOnWrite="true" copyOnRead="true" memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.TmpFnSrvFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="tmpBlackListSubs" maxEntriesLocalHeap="5000000"
+		maxElementsInMemory="5000000" eternal="true" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" copyOnWrite="true" copyOnRead="true"
+		memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.TmpBlackListSubsFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="tmpRecharge24h" maxEntriesLocalHeap="5000000"
+		eternal="true" maxElementsInMemory="5000000" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" copyOnWrite="true" copyOnRead="true"
+		memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.TmpRecharge24hFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="tmpLangEn" maxEntriesLocalHeap="5000000"
+		maxElementsInMemory="5000000" eternal="true" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" copyOnWrite="true" copyOnRead="true"
+		memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.TmpLangEnFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="tmpVtCutSea" maxEntriesLocalHeap="5000000"
+		maxElementsInMemory="5000000" eternal="true" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" copyOnWrite="true" copyOnRead="true"
+		memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.TmpVtCutSeaFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+<!-- End: Phan cache dung luu du lieu sau khi truy van webservice -->
+
+<!-- Begin: Phan cache dung luu ket qua sau 2 lan so sanh du lieu webservice cua viettel -->
+	
+	<cache name="viettelTmpBatch" maxEntriesLocalHeap="5000000" eternal="true"
+		maxElementsInMemory="5000000" timeToIdleSeconds="0" timeToLiveSeconds="0"
+		copyOnWrite="true" copyOnRead="true" memoryStoreEvictionPolicy="FIFO">
+
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.ViettelTmpBatchFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="viettelTmpAcmM" maxEntriesLocalHeap="5000000"
+		maxElementsInMemory="5000000" eternal="true" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" copyOnWrite="true" copyOnRead="true"
+		memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.ViettelTmpAcmMFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="viettelTmpSubsUpp" maxEntriesLocalHeap="5000000" eternal="true"
+		maxElementsInMemory="5000000" timeToIdleSeconds="0" timeToLiveSeconds="0"
+		copyOnWrite="true" copyOnRead="true" memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.ViettelTmpSubsUppFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="viettelTmpVtCut" maxEntriesLocalHeap="5000000"
+		maxElementsInMemory="5000000" eternal="true" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" copyOnWrite="true" copyOnRead="true"
+		memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.ViettelTmpVtCutFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="viettelTmpFnNbr" maxEntriesLocalHeap="5000000" eternal="true"
+		maxElementsInMemory="5000000" timeToIdleSeconds="0" timeToLiveSeconds="0"
+		copyOnWrite="true" copyOnRead="true" memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.ViettelTmpFnNbrFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="viettelTmpOcsCdrHis" maxEntriesLocalHeap="5000000"
+		maxElementsInMemory="5000000" eternal="true" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" copyOnWrite="true" copyOnRead="true"
+		memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+			
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.ViettelTmpOcsCdrHisFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="viettelTmpFnSrv" maxEntriesLocalHeap="5000000" eternal="true"
+		maxElementsInMemory="5000000" timeToIdleSeconds="0" timeToLiveSeconds="0"
+		copyOnWrite="true" copyOnRead="true" memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.ViettelTmpFnSrvFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="viettelTmpBlackListSubs" maxEntriesLocalHeap="5000000"
+		maxElementsInMemory="5000000" eternal="true" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" copyOnWrite="true" copyOnRead="true"
+		memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.ViettelTmpBlackListSubsFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="viettelTmpRecharge24h" maxEntriesLocalHeap="5000000"
+		eternal="true" maxElementsInMemory="5000000" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" copyOnWrite="true" copyOnRead="true"
+		memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.ViettelTmpRecharge24hFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="viettelTmpLangEn" maxEntriesLocalHeap="5000000"
+		maxElementsInMemory="5000000" eternal="true" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" copyOnWrite="true" copyOnRead="true"
+		memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.ViettelTmpLangEnFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+
+	<cache name="viettelTmpVtCutSea" maxEntriesLocalHeap="5000000"
+		maxElementsInMemory="5000000" eternal="true" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" copyOnWrite="true" copyOnRead="true"
+		memoryStoreEvictionPolicy="FIFO">
+		<cacheEventListenerFactory
+			class="com.viettel.ocs.cache.NotNullCacheEventListenerFactory" />
+
+		<cacheWriter writeMode="write-through" maxWriteDelay="5"
+			rateLimitPerSecond="5" writeCoalescing="true" writeBatching="true"
+			writeBatchSize="5000" retryAttempts="2" retryAttemptDelaySeconds="10"
+			notifyListenersOnException="true">
+			<cacheWriterFactory class="com.viettel.ocs.cache.writer.ViettelTmpVtCutSeaFileWriterFactory" />
+		</cacheWriter>
+	</cache>
+	
+<!-- End: Phan cache dung luu ket qua sau 2 lan so sanh du lieu webservice cua viettel -->
+
+</ehcache>
