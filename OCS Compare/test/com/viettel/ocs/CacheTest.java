@@ -13,7 +13,7 @@ public class CacheTest {
 	private static final Logger logger = LoggerFactory.getLogger(CacheTest.class);
 	
 	public static void main(String[] args) {
-//		Constant.STEP = "2";
+		Constant.STEP = "2";
 		
 		CacheManager cacheManager = CacheManager.getInstance();
 		CacheWrapper<String, String> tmpBatch = new EhcacheWrapper<String, String>("tmpBatch", cacheManager);
@@ -35,17 +35,18 @@ public class CacheTest {
 		System.out.println(Constant.STEP);
 		
 		for (long i = 100000000; i< 100100000; i++){
-			viettelTmpBatch.put(String.valueOf(i), "value tmpAcmM | value tmpAcmM | value tmpAcmM | value tmpAcmM | value tmpAcmM | value tmpAcmM | value tmpAcmM | value tmpAcmM " + i);
-//			tmpAcmM.put(String.valueOf(i), "value tmpAcmM" + i);
-//			tmpSubsUpp.put(String.valueOf(i), "value tmpSubsUpp" + i);
-//			tmpVtCut.put(String.valueOf(i), "value tmpVtCut" + i);
-//			tmpFnNbr.put(String.valueOf(i), "value tmpFnNbr" + i);
-//			tmpOcsCdrHis.put(String.valueOf(i), "value tmpOcsCdrHis" + i);
-//			tmpFnSrv.put(String.valueOf(i), "value tmpFnSrv" + i);
-//			tmpBlackListSubs.put(String.valueOf(i), "value tmpBlackListSubs" + i);
-//			tmpRecharge24h.put(String.valueOf(i), "value tmpRecharge24h" + i);
-//			tmpLangEn.put(String.valueOf(i), "value tmpLangEn" + i);
-//			tmpVtCutSea.put(String.valueOf(i), "value tmpVtCutSea" + i);
+//			viettelTmpBatch.put(String.valueOf(i), "value tmpAcmM | value tmpAcmM | value tmpAcmM | value tmpAcmM | value tmpAcmM | value tmpAcmM | value tmpAcmM | value tmpAcmM " + i);
+			tmpBatch.put(String.valueOf(i), "value tmpAcmM" + i);
+			tmpAcmM.put(String.valueOf(i), "value tmpAcmM" + i + i);
+			tmpSubsUpp.put(String.valueOf(i), "value tmpSubsUpp" + i);
+			tmpVtCut.put(String.valueOf(i), "value tmpVtCut" + i);
+			tmpFnNbr.put(String.valueOf(i), "value tmpFnNbr" + i);
+			tmpOcsCdrHis.put(String.valueOf(i), "value tmpOcsCdrHis" + i);
+			tmpFnSrv.put(String.valueOf(i), "value tmpFnSrv" + i);
+			tmpBlackListSubs.put(String.valueOf(i), "value tmpBlackListSubs" + i);
+			tmpRecharge24h.put(String.valueOf(i), "value tmpRecharge24h" + i);
+			tmpLangEn.put(String.valueOf(i), "value tmpLangEn" + i);
+			tmpVtCutSea.put(String.valueOf(i), "value tmpVtCutSea" + i);
 		}
 		
 		long endTime = System.currentTimeMillis();

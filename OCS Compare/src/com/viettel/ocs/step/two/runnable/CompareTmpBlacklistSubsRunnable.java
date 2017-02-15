@@ -1,4 +1,4 @@
-package com.viettel.ocs.runnable;
+package com.viettel.ocs.step.two.runnable;
 
 import java.util.Set;
 

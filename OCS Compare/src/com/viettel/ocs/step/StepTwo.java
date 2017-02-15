@@ -12,17 +12,17 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.viettel.ocs.runnable.CompareTmpAcmMRunnable;
-import com.viettel.ocs.runnable.CompareTmpBatchRunnable;
-import com.viettel.ocs.runnable.CompareTmpBlacklistSubsRunnable;
-import com.viettel.ocs.runnable.CompareTmpFnNbrRunnable;
-import com.viettel.ocs.runnable.CompareTmpFnSrvRunnable;
-import com.viettel.ocs.runnable.CompareTmpLangEnRunnable;
-import com.viettel.ocs.runnable.CompareTmpOcsCdrHisRunnable;
-import com.viettel.ocs.runnable.CompareTmpRecharge24hRunnable;
-import com.viettel.ocs.runnable.CompareTmpSubsUppRunnable;
-import com.viettel.ocs.runnable.CompareTmpVtCutRunnable;
-import com.viettel.ocs.runnable.CompareTmpVtCutSeaRunnable;
+import com.viettel.ocs.step.two.runnable.CompareTmpAcmMRunnable;
+import com.viettel.ocs.step.two.runnable.CompareTmpBatchRunnable;
+import com.viettel.ocs.step.two.runnable.CompareTmpBlacklistSubsRunnable;
+import com.viettel.ocs.step.two.runnable.CompareTmpFnNbrRunnable;
+import com.viettel.ocs.step.two.runnable.CompareTmpFnSrvRunnable;
+import com.viettel.ocs.step.two.runnable.CompareTmpLangEnRunnable;
+import com.viettel.ocs.step.two.runnable.CompareTmpOcsCdrHisRunnable;
+import com.viettel.ocs.step.two.runnable.CompareTmpRecharge24hRunnable;
+import com.viettel.ocs.step.two.runnable.CompareTmpSubsUppRunnable;
+import com.viettel.ocs.step.two.runnable.CompareTmpVtCutRunnable;
+import com.viettel.ocs.step.two.runnable.CompareTmpVtCutSeaRunnable;
 import com.viettel.ocs.util.Constant;
 import com.viettel.ocs.util.FileUtil;
 import com.viettel.ocs.util.PropsUtil;
